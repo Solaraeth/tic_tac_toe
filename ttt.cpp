@@ -18,20 +18,19 @@ void current_board() {
         std::cout << row3[0] << row3[1] << row3[2] << row3[3] << row3[4]<< "\n";
     
     }
+
 int player_move() {
     
     std::cout << "\n";
     std::cout << "Turn: " << turn << "\n\n";
-    std::cout << "Pick a row: ";
+    std::cout << "Select a square: ";
     std::cin >> position;
     
     return position;
 
 }
 
-
 int main() {
-    
     
     bool game_complete = false;
 
@@ -41,49 +40,76 @@ int main() {
 
         switch (position) {
             case 11:
-                row1[0] = "X";
-                turn = turn + 1;
-                current_board();
+                if(row1[0] == " ") {
+                    if (turn % 2 == 0) {row1[0] = "X";}
+                    else {row1[0] = "O";}
+                    turn = turn + 1;
+                    current_board(); }
+                else {std::cout << "\nInvalid move, try again: \n";}
                 break;
             case 12:
-                row1[2] = "X";
-                turn = turn + 1;
-                current_board();
+                 if(row1[2] == " ") {
+                    if (turn % 2 == 0) {row1[2] = "X";}
+                    else {row1[2] = "O";}
+                    turn = turn + 1;
+                    current_board(); }
+                else {std::cout << "\nInvalid move, try again: \n";}
                 break;
             case 13:
-                row1[4] = "X";
-                turn = turn + 1;
-                current_board();
+                if(row1[4] == " ") {
+                    if (turn % 2 == 0) {row1[4] = "X";}
+                    else {row1[4] = "O";}
+                    turn = turn + 1;
+                    current_board(); }
+                else {std::cout << "\nInvalid move, try again: \n";}
                 break;
             case 21:
-                row2[0] = "X";
-                turn = turn + 1;
-                current_board();
+                  if(row2[0] == " ") {
+                    if (turn % 2 == 0) {row2[0] = "X";}
+                    else {row2[0] = "O";}
+                    turn = turn + 1;
+                    current_board(); }
+                else {std::cout << "\nInvalid move, try again: \n";}
                 break;
             case 22:
-                row2[2] = "X";
-                turn = turn + 1;
-                current_board();
+                   if(row2[2] == " ") {
+                    if (turn % 2 == 0) {row2[2] = "X";}
+                    else {row2[2] = "O";}
+                    turn = turn + 1;
+                    current_board(); }
+                else {std::cout << "\nInvalid move, try again: \n";}
                 break;
             case 23:
-                row2[4] = "X";
-                turn = turn + 1;
-                current_board();
+                 if(row2[4] == " ") {
+                    if (turn % 2 == 0) {row2[4] = "X";}
+                    else {row2[4] = "O";}
+                    turn = turn + 1;
+                    current_board(); }
+                else {std::cout << "\nInvalid move, try again: \n";}
                 break;
             case 31:
-                row3[0] = "X";
-                turn = turn + 1;
-                current_board();
+                  if(row3[0] == " ") {
+                    if (turn % 2 == 0) {row3[0] = "X";}
+                    else {row3[0] = "O";}
+                    turn = turn + 1;
+                    current_board(); }
+                else {std::cout << "\nInvalid move, try again: \n";}
                 break;
             case 32:
-                row3[2] = "X";
-                turn = turn + 1;
-                current_board();
+                  if(row3[2] == " ") {
+                    if (turn % 2 == 0) {row3[2] = "X";}
+                    else {row3[2] = "O";}
+                    turn = turn + 1;
+                    current_board(); }
+                else {std::cout << "\nInvalid move, try again: \n";}
                 break;
             case 33:
-                row3[4] = "X";
-                turn = turn + 1;
-                current_board();
+                   if(row3[4] == " ") {
+                    if (turn % 2 == 0) {row3[4] = "X";}
+                    else {row3[4] = "O";}
+                    turn = turn + 1;
+                    current_board(); }
+                else {std::cout << "\nInvalid move, try again: \n";}
                 break;
             default:
                 std::cout << "\nInvalid move, try again: \n";
@@ -91,7 +117,7 @@ int main() {
         
         }
         
-        if (row1[0] == row2[2] && row2[2] == row3[4] && turn > 4) {
+        if (row1[0] == row2[2] && row2[2] == row3[4] && turn > 4 || turn == 10) {
 
         game_complete = true;
         
