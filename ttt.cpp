@@ -1,16 +1,25 @@
 #include <iostream>
 #include <vector>
 
+// Vectors that contain the board state
 std::vector<std::string> row1 = {" ", "|", " ", "|", " "};
 std::vector<std::string> row2 = {" ", "|", " ", "|", " "};
 std::vector<std::string> row3 = {" ", "|", " ", "|", " "};
 std::string divider = "-----";
+
+// Turn counter
 int turn = 1;
+
+// Player move input
 int position;
-std::string winner;
+
+// Checks for a full board
 bool game_complete;
+
+// Checks for a winning board state
 bool win_check = false;
 
+// Prints the board state
 void current_board() {
 
         std::cout << "\n";
@@ -22,10 +31,10 @@ void current_board() {
     
     }
 
+// Prints turn number, and ask player to select a square which is inputed into the variable position
 int player_move() {
     
-    std::cout << "\n";
-    std::cout << "Turn: " << turn << "\n\n";
+    std::cout << "\nTurn: " << turn << "\n\n";
     std::cout << "Select a square: ";
     std::cin >> position;
     
@@ -33,6 +42,7 @@ int player_move() {
 
 }
 
+// Checks the board for all possible winning game states
 bool win_checks() {
 
     if (row1[0] == row2[2] && row2[2] == row3[4] && (row1[0] == "X" || row1[0] == "O")) {
@@ -90,12 +100,19 @@ bool win_checks() {
 
 int main() {
     
+    
     game_complete = false;
 
+    // Do while loop that keeps the game going if there is no winning game state or the board isn't full
     do {
         
+        // asks for player input
         player_move();
 
+        // switch that checks for player move input and edits board state accordingly while also checking for invalid inputs
+        // The order of positions is from the left most square of row 1 "case 11" to the right most square of row 3 "case 33"
+        // Checks whether turn number is even or odd to alternate printing "X" or "O"
+        // if the player move is invalid compensates for the later adding to the turn counter by pre-emptively subracting 1
         switch (position) {
             case 11:
                 if(row1[0] == " ") {
@@ -185,11 +202,16 @@ int main() {
 
         }
         
+        // Adds 1 to the turn counter 
         turn = turn + 1;
+
+        // Prints current board so player can see the result of their move
         current_board();
 
+        // Checks to see if the player move has resulted in a winning board state
         win_checks();
 
+        // Prints draw and ends game by setting game_complete to true after 9 turns as the board will be full so no further moves will be possible
         if (win_check == false && turn == 10) {
 
             game_complete = true;
